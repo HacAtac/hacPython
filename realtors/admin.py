@@ -2,4 +2,14 @@ from django.contrib import admin
 from .models import Realtor
 
 # Register your models here.
-admin.site.register(Realtor)
+class RealtorAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'email', 'hireDate')
+    list_display_links = ('id', 'name', 'email', 'hireDate')
+    search_fields = ('name', 'email', 'id', 'hireDate')
+    list_per_page = 25
+
+
+
+admin.site.register(Realtor, RealtorAdmin)
+
+

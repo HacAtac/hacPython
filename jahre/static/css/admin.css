@@ -36,3 +36,12 @@ a.button {
   background: #10284e;
   color: #fff;
 }
+
+input,
+textarea,
+select,
+.form-row p,
+form .button {
+  background: #fff;
+  color: #10284e;
+}
