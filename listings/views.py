@@ -26,11 +26,44 @@ def listing(request, listing_id):
     return render(request, 'listings/listing.html', context)
 
 def search(request):
+    #query set list to hold all the listings
+    querysetList = Listing.objects.order_by('-listDate')
+
+    # Keywords
+    if 'keywords' in request.GET:
+        keywords = request.GET['keywords']
+        if keywords:
+            querysetList = querysetList.filter(description__icontains=keywords)
+
+    # City
+    if 'city' in request.GET:
+        city = request.GET['city']
+        if city:
+            querysetList = querysetList.filter(city__iexact=city)
+    
+    # State
+    if 'state' in request.GET:
+        state = request.GET['state']
+        if state:
+            querysetList = querysetList.filter(state__iexact=state)
+    
+    # Bedrooms
+    if 'bedrooms' in request.GET:
+        bedrooms = request.GET['bedrooms']
+        if bedrooms:
+            querysetList = querysetList.filter(bedrooms__lte=bedrooms)
+
+    # Price
+    if 'price' in request.GET:
+        price = request.GET['price']
+        if price:
+            querysetList = querysetList.filter(price__lte=price)
 
     context = {
         'stateChoices': stateChoices,
         'bedroomChoices': bedroomChoices,
-        'priceChoices': priceChoices
+        'priceChoices': priceChoices,
+        'listings': querysetList
     }
 
     return render(request, 'listings/search.html', context)
