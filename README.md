@@ -5,7 +5,7 @@
   
   ## Table of contents
   - [Installation](#installation)
-  - [Languages](#languages)
+  - [Tech](#tech)
   - [License](#license)
   - [Contributing](#contributing)
   - [Tests](#tests)
@@ -14,7 +14,7 @@
   ## Installation 
     Clone or fork, assuming you have PYTHON installed, run PY manage.py runserver to start server and go to local host on port 8000. I've installed the deps on venv so you should't haft to install them.
   
-  ## Languages 
+  ## Tech 
     Python, Django, Postgres, Bootstrap, CSS, HTML5, JavaScript.
   
   ## License 
